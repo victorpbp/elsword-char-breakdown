@@ -25,6 +25,8 @@ export default function Header() {
         <>
             
             <div className="flex justify-between items-center bg-zinc-900 w-full h-12 px-5 text-sm
+            position: sticky top-0 z-50
+            border-b border-b-foreground/10
             sm:hidden
             ">
                 <button onClick={toggleMenu} className="
@@ -53,6 +55,7 @@ export default function Header() {
 
             {/* Desktop version */}
             <nav className="bg-zinc-900 w-full justify-center border-b border-b-foreground/10 h-12 hidden
+            position: sticky top-0 z-50
             sm:flex
             ">
                 <div className="w-full max-w-5xl flex justify-center gap-2 items-center p-3 px-5 text-sm

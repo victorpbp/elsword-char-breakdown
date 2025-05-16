@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.className} ${" "} scroll-smooth`} suppressHydrationWarning>
+    <html lang="en" className={`${geistSans.className} ${" "} scroll-smooth scroll-p-12`} suppressHydrationWarning>
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
