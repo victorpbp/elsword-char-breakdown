@@ -14,7 +14,7 @@ export default function SpecificClassPage() {
 
     return (
       <>
-        <p>This is the page for {uid}</p>
+        <p>This is the page for the {uid} class</p>
       </>
     );
   }

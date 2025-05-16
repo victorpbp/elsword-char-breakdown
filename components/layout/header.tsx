@@ -9,6 +9,7 @@ export default function Header() {
             <HeaderItem title={"Home"} icon={kofiLogo} linkto="/" />
             <HeaderItem title={"Glossary"} icon={null} linkto="/glossary" />
             <HeaderItem title={"Classes"} icon={null} linkto="/classes" />
+            <HeaderItem title={"Playstyle"} icon={null} linkto="/playstyle" />
         </div>
     </nav>
  )
