@@ -8,6 +8,7 @@ export default function Header() {
         <div className="w-full max-w-5xl flex justify-center gap-2 items-center p-3 px-5 text-sm">
             <HeaderItem title={"Home"} icon={kofiLogo} linkto="/" />
             <HeaderItem title={"Glossary"} icon={null} linkto="/glossary" />
+            <HeaderItem title={"Classes"} icon={null} linkto="/classes" />
         </div>
     </nav>
  )
