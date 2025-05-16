@@ -14,7 +14,7 @@ export default function GlossaryItem({
             transition-colors duration-200
             ${title === "Synergy" ? "border-t border-t-foreground/10" : ""}
             `}
-            id={title}
+            id={title.replace(/ /g, "_")}
           >
             <h2
               className="text-2xl font-bold"

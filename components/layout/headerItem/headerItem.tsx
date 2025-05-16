@@ -17,8 +17,7 @@ export default function HeaderItem({
 
     // Check the url path and style the header item accordingly
     const path = usePathname();
-    console.log(path);
-
+    
     return (
         <div
         className={`
