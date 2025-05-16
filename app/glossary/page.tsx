@@ -1,5 +1,3 @@
-// Need to add the moving around by the title of what the user came in for
-
 import GlossaryItem from "@/components/layout/glossary/glossary";
 import Link from "next/link";
 export default async function Glossary() {
