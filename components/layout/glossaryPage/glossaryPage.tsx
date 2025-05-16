@@ -11,7 +11,6 @@ export default function GlossaryPage() {
     const hash = window.location.hash;
     if (hash) {
       const element = document.querySelector(hash);
-      console.log(element)
       if (element) {
         window.scrollTo({
           top: element.getBoundingClientRect().top + window.scrollY,
