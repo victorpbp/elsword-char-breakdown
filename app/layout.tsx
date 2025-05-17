@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import GlossaryShortcut from "@/components/layout/glossaryShortcut/glossaryShortcut";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -42,6 +43,7 @@ export default function RootLayout({
                 {children}
               </div>
 
+              <GlossaryShortcut />
               <Footer />
               
             </div>

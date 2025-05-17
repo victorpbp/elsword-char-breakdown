@@ -31,11 +31,13 @@ export default function HeaderItem({
                 hover:border-zinc-400
                 hover:bg-zinc-800 
                 transition-colors duration-200
+                active:bg-gray-500
+                tranform active:scale-95
                 ${path === linkto ? "border-zinc-400" : ""}
                 `}>
                 
                     <div className="flex items-center gap-2">
-                        <Image width={24} height={24} src={icon ? icon : homeArt} alt={"icon"}/>
+                        <Image width={22} height={22} src={icon ? icon : homeArt} alt={"icon"}/>
                         <p>{title}</p>
                     </div>
             </div>

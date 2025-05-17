@@ -1,7 +1,6 @@
 'use client'
 
 import GlossaryItem from "@/components/layout/glossaryPage/glossaryItem/glossaryItem";
-import Link from "next/link";
 import { useEffect } from "react";
 
 export default function GlossaryPage() {
@@ -11,9 +10,9 @@ export default function GlossaryPage() {
     const hash = window.location.hash;
     if (hash) {
       const element = document.querySelector(hash);
-      if (element) {
+      if (element) { 
         window.scrollTo({
-          top: element.getBoundingClientRect().top + window.scrollY,
+          top: element.getBoundingClientRect().top,
           behavior: "smooth",
         });
         element.scrollIntoView({ behavior: "smooth" });
@@ -25,10 +24,12 @@ export default function GlossaryPage() {
 
   return (
     <>
+
       <div
         className="flex flex-col gap-5"
       >
-        <div
+{/*
+         <div
           className="flex flex-col gap-2 items-center justify-center text-center p-5"
         >
 
@@ -36,11 +37,11 @@ export default function GlossaryPage() {
           <p className="text-base text-gray-400">
           Here you'll find definition for the many terminologies utilized in this page
           </p>
-          <Link href={"#Res_Title"}>Link</Link>
-        </div>
+          <a href={"#Res_Title"}>Link</a>
+        </div> */}
 
         <div
-          className="flex flex-col justify-start text-left p-5 w-full max-w-5xl"
+          className="flex flex-col justify-start text-left px-5 w-full max-w-5xl"
         >
           <GlossaryItem title="Synergy" description="Divided in low/medium/High, it's the amount of offensive and useful buffs/debuffs a character can provide."/>
 

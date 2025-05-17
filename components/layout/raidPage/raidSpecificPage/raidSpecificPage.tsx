@@ -1,7 +1,7 @@
 'use client';
 import { useParams } from "next/navigation";
 
-export default function SpecificPlaystylePage() {
+export default function SpecificRaidPage() {
 
     const params = useParams();
     const { uid } = params;
@@ -9,7 +9,7 @@ export default function SpecificPlaystylePage() {
 
     return (
       <>
-        <p>This is the page for the {uid} playstyle</p>
+        <p>This is the page for the {uid} raid</p>
       </>
     );
   }

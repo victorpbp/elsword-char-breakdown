@@ -12,21 +12,24 @@ export default function Footer() {
         sm:py-4"
         >
             <p>
-                Maintained by Study Group {" "}
+                Maintained by {" "}
                 <a
-                href="https://cobodex.eu/"
+                href="https://discord.com/users/394146105060753409"
                 target="_blank"
                 className="text-violet-300 hover:text-violet-400 transition-colors duration-200"
                 >
-                    (Discord)
-                </a>
+                    Ignia 
+                </a>, {" "}
+                Elated, Angel, Snowii, Shiranui, BlueElekt, VictorVXD3, Edemon
+                
             </p>
 
+{/*
             <hr className="w-px h-5 bg-white opacity-25
             hidden sm:block
             "/>
 
-            <div className="flex items-center gap-2">
+             <div className="flex items-center gap-2">
                 <Image 
                 src={kofiLogo}
                 alt={"Kofi Logo"} 
@@ -38,7 +41,8 @@ export default function Footer() {
                 target="_blank"
                 className="text-violet-300 hover:text-violet-400 transition-colors duration-200"
                 >Support me on Ko-fi!</a>
-            </div>
+            </div> 
+*/}
         </footer>
     )
 

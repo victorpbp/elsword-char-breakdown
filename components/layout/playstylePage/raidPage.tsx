@@ -4,9 +4,9 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function PlaystylePage() {
+export default function RaidPage() {
   
-    const [playstyle, setPlaystyle] = useState('');
+    const [raid, setPlaystyle] = useState('');
     const updatePlaystyle = (e: React.ChangeEvent<HTMLInputElement>) => {
       setPlaystyle(e.target.value);
     }

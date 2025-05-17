@@ -12,8 +12,9 @@ export default function GlossaryItem({
             border-b border-b-foreground/10
             hover:bg-zinc-700/50
             transition-colors duration-200
-            ${title === "Synergy" ? "border-t border-t-foreground/10" : ""}
+            
             `}
+            //${title === "Synergy" ? "border-t border-t-foreground/10" : ""}
             id={title.replace(/ /g, "_")}
           >
             <h2
