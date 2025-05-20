@@ -60,8 +60,8 @@ export default function Header() {
                     <HeaderItem title={"Home"} icon={homeIcon} linkto="/" />
                     <HeaderItem title={"Glossary"} icon={null} linkto="/glossary" />
                     <HeaderItem title={"Classes"} icon={classesIcon} linkto="/classes" />
-                    <HeaderItem title={"Party Syn"} icon={partySynIcon} linkto="/party_syn" closeMenu={toggleMenu}/>
-                    <HeaderItem title={"Raids"} icon={null} linkto="/raids" closeMenu={toggleMenu}/>
+                    <HeaderItem title={"Party Syn"} icon={partySynIcon} linkto="/party_syn"/>
+                    <HeaderItem title={"Raids"} icon={null} linkto="/raids"/>
                     </div>
             </nav>
 
