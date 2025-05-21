@@ -17,27 +17,30 @@ export default function Header() {
     return (
 
         <>
-            
-            <div className={`flex items-center h-12 p-5
-            fixed right-10 bottom-20 z-50
-            rounded-lg border-4
-            transition-colors duration-400
-            ${isOpen ? "bg-zinc-700 border-zinc-900" : "bg-zinc-900 border-zinc-700"}
-            sm:hidden
+            <button onClick={toggleMenu}
+            className={`
+                flex flex-col items-center min-h-6 px-5 ${isOpen ? 'gap-0 py-4' : 'gap-1 py-3'}
+                fixed right-10 bottom-20 z-50
+                rounded-lg border-4
+                transition-colors duration-400
+                ${isOpen ? "bg-zinc-700 border-zinc-900" : "bg-zinc-900 border-zinc-700"}
+                sm:hidden
             `}>
-                <button onClick={toggleMenu} className="
-                    font-bold text-xl text-zinc-300 w-4
-                ">
-                    {/* Hamburger icon */}
-                    {isOpen ? "X" : "M"}
-                </button>
-            </div>
+
+                {
+                //Make it turn into an X when open
+                }
+
+                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpen ? "-rotate-45 absolute" : ""}`} />
+                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`} />
+                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpen ? "rotate-45 absolute" : ""}`} />                    
+
+            </button>
             {isOpen && (<>
                 <div className="fixed bottom-0 w-screen z-40 flex justify-center items-center">
                     <div className="bg-zinc-600 p-5 w-full h-fit content-center">
                         <div className="flex flex-col justify-center">
                             <HeaderItem title={"Home"} icon={homeIcon} linkto="/" closeMenu={toggleMenu}/>
-                            <HeaderItem title={"Glossary"} icon={null} linkto="/glossary" closeMenu={toggleMenu}/>
                             <HeaderItem title={"Classes"} icon={classesIcon} linkto="/classes" closeMenu={toggleMenu}/>
                             <HeaderItem title={"Party Syn"} icon={partySynIcon} linkto="/party_syn" closeMenu={toggleMenu}/>
                             <HeaderItem title={"Raids"} icon={null} linkto="/raids" closeMenu={toggleMenu}/>
@@ -58,7 +61,6 @@ export default function Header() {
                 <div className="w-full max-w-5xl flex justify-center gap-2 items-center p-3 px-5 text-sm
                 ">
                     <HeaderItem title={"Home"} icon={homeIcon} linkto="/" />
-                    <HeaderItem title={"Glossary"} icon={null} linkto="/glossary" />
                     <HeaderItem title={"Classes"} icon={classesIcon} linkto="/classes" />
                     <HeaderItem title={"Party Syn"} icon={partySynIcon} linkto="/party_syn"/>
                     <HeaderItem title={"Raids"} icon={null} linkto="/raids"/>
