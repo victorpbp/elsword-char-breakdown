@@ -1,9 +1,9 @@
 import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import GlossaryShortcut from "@/components/layout/glossary/glossaryShortcut/glossaryShortcut";
+import { Providers } from "./providers";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -28,12 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.className} ${" "} scroll-smooth scroll-p-12`} suppressHydrationWarning>
       <body className="bg-background text-foreground">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+
+        <Providers>
+        
           <main className="min-h-screen flex flex-col items-center">
             <div className="flex-1 w-full flex flex-col gap-4 items-center bg-neutral-800">
 
@@ -48,7 +45,8 @@ export default function RootLayout({
               
             </div>
           </main>
-        </ThemeProvider>
+
+        </Providers>
       </body>
     </html>
   );
