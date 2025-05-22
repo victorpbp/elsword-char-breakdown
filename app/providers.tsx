@@ -1,6 +1,8 @@
 'use client';
 
 import { GlossaryProvider } from "@/contexts/glossary/glossaryContext";
+import { MobileMenuProvider } from "@/contexts/mobileMenu/mobileMenuContext";
+import { OverlayControlProvider } from "@/contexts/overlayControl";
 import { ThemeProvider } from "next-themes";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -11,9 +13,15 @@ export function Providers({ children }: { children: React.ReactNode }) {
             enableSystem
             disableTransitionOnChange
         >
+            
             <GlossaryProvider>
-                {children}
+                <MobileMenuProvider>
+                    <OverlayControlProvider>
+                        {children}
+                    </OverlayControlProvider>
+                </MobileMenuProvider>
             </GlossaryProvider>
+            
         </ThemeProvider>
     )
 }

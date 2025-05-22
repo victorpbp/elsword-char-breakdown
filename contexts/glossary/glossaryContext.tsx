@@ -1,7 +1,7 @@
 import { useState, createContext, useContext, ReactNode, useEffect } from "react";
 
 type GlossaryContextType = {
-  isOpen: boolean;
+  isOpenGlossary: boolean;
   targetTerm: string | null;
   glossaryItems: { title: string; description: string }[];
   openGlossary: (term?: string) => void;
@@ -11,7 +11,7 @@ type GlossaryContextType = {
 const GlossaryContext = createContext<GlossaryContextType | undefined>(undefined);
 
 export function GlossaryProvider({ children }: { children: ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenGlossary, setIsOpenGlossary] = useState(false);
   const [targetTerm, setTargetTerm] = useState<string | null>(null);
 
   const [glossaryItems, setGlossaryItems] = useState<{ title: string; description: string }[]>([
@@ -79,16 +79,16 @@ export function GlossaryProvider({ children }: { children: ReactNode }) {
 
   const openGlossary = (term?: string) => {
     setTargetTerm(term ? `#${term}` : null);
-    setIsOpen(true);
+    setIsOpenGlossary(true);
   };
 
   const closeGlossary = () => {
     setTargetTerm(null);
-    setIsOpen(false);
+    setIsOpenGlossary(false);
   };
 
   return (
-    <GlossaryContext.Provider value={{ glossaryItems, isOpen, targetTerm, openGlossary, closeGlossary }}>
+    <GlossaryContext.Provider value={{ glossaryItems, isOpenGlossary, targetTerm, openGlossary, closeGlossary }}>
       {children}
     </GlossaryContext.Provider>
   );
