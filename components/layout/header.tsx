@@ -1,17 +1,27 @@
 'use client';
 
 import HeaderItem from "./headerItem/headerItem"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classesIcon from "../../app/public/headers/classesIcon.png";
 import homeIcon from "../../app/public/headers/homeIcon.png";
 import partySynIcon from "../../app/public/headers/partySynIcon.png";
+import { useGlossary } from "@/contexts/glossary/glossaryContext";
 
 export default function Header() {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const { isOpen, closeGlossary } = useGlossary();
+
+    useEffect(() => {
+        if (isOpen && isOpenMenu) {
+            setIsOpenMenu(false);
+        }
+    }, [isOpen]);
+
+    const [isOpenMenu, setIsOpenMenu] = useState(false);
     
     const toggleMenu = () => {
-        setIsOpen(!isOpen);
+        if (isOpen) closeGlossary();
+        setIsOpenMenu(!isOpenMenu);
     }
 
     return (
@@ -19,11 +29,11 @@ export default function Header() {
         <>
             <button onClick={toggleMenu}
             className={`
-                flex flex-col items-center min-h-6 px-5 ${isOpen ? 'gap-0 py-4' : 'gap-1 py-3'}
+                flex flex-col items-center min-h-6 px-5 ${isOpenMenu ? 'gap-0 py-4' : 'gap-1 py-3'}
                 fixed right-10 bottom-20 z-50
                 rounded-lg border-4
                 transition-colors duration-400
-                ${isOpen ? "bg-zinc-700 border-zinc-900" : "bg-zinc-900 border-zinc-700"}
+                ${isOpenMenu ? "bg-zinc-700 border-zinc-900" : "bg-zinc-900 border-zinc-700"}
                 sm:hidden
             `}>
 
@@ -31,12 +41,12 @@ export default function Header() {
                 //Make it turn into an X when open
                 }
 
-                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpen ? "-rotate-45 absolute" : ""}`} />
-                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`} />
-                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpen ? "rotate-45 absolute" : ""}`} />                    
+                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpenMenu ? "-rotate-45 absolute" : ""}`} />
+                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpenMenu ? "opacity-0" : "opacity-100"}`} />
+                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpenMenu ? "rotate-45 absolute" : ""}`} />                    
 
             </button>
-            {isOpen && (<>
+            {isOpenMenu && (<>
                 <div className="fixed bottom-0 w-screen z-40 flex justify-center items-center">
                     <div className="bg-zinc-600 p-5 w-full h-fit content-center">
                         <div className="flex flex-col justify-center">

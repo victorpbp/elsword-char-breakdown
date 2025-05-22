@@ -1,23 +1,20 @@
 'use client';
 
-import React, { useState } from "react";
+import React from "react";
 import GlossaryOverlay from "../glossaryOverlay/glossaryOverlay";
 import bookOpen from "@/app/public/bookOpen.png";
 import bookClosed from "@/app/public/bookClosed.png";
 import Image from "next/image";
+import { useGlossary } from "@/contexts/glossary/glossaryContext";
 
 export default function GlossaryShortcut() {
 
-    const [isOpen, setIsOpen] = useState(false);
-    
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    }
+    const { isOpen, openGlossary, closeGlossary, targetTerm } = useGlossary();
 
     return (
 
         <>
-            <button onClick={toggleMenu} 
+            <button onClick={isOpen ? ()=>closeGlossary() : ()=>openGlossary('Support')} 
             className={`flex items-center h-12 p-3
                 fixed right-10 bottom-40 z-50
                 rounded-lg border-4
@@ -41,7 +38,7 @@ export default function GlossaryShortcut() {
                         </div>
                     </div>
                 </div>
-                <button onClick={toggleMenu} className="cursor-default fixed z-0 w-full h-full bg-black opacity-50" />
+                <button onClick={isOpen ? ()=>closeGlossary() : ()=>openGlossary()} className="cursor-default fixed z-0 w-full h-full bg-black opacity-50" />
             </>
                 
             )}
