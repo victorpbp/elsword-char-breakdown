@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useCallback, useContext, useState } from "react";
 import { useGlossary } from "./glossary/glossaryContext";
 import { useMobileMenu } from "./mobileMenu/mobileMenuContext"; // Example for future
+import { usePartySyn } from "./partySyn/partySynContext";
 
 type OverlayType = "glossary" | "mobileMenu" | "partySyn" | null;
 
@@ -13,13 +14,15 @@ const OverlayControlContext = createContext<OverlayControlContextType | undefine
 
 export function OverlayControlProvider({ children }: { children: ReactNode }) {
   const { openGlossary, closeGlossary } = useGlossary();
-  const { openMobileMenu, closeMobileMenu } = useMobileMenu(); // Example
+  const { openMobileMenu, closeMobileMenu } = useMobileMenu();
+  const { openPartySyn, closePartySyn } = usePartySyn();
 
   const [currentOverlay, setCurrentOverlay] = useState<OverlayType>(null);
 
   const closeAllOverlays = useCallback(() => {
     closeGlossary();
     closeMobileMenu();
+    closePartySyn();
     // ...close others as you add them
   }, [closeGlossary, closeMobileMenu]);
 
@@ -28,7 +31,7 @@ export function OverlayControlProvider({ children }: { children: ReactNode }) {
     setCurrentOverlay(overlay);
     if (overlay === "glossary") openGlossary(term);
     else if (overlay === "mobileMenu") openMobileMenu();
-    // ...add others as needed
+    else if (overlay === "partySyn") openPartySyn(term);
   }, [closeAllOverlays, openGlossary, openMobileMenu]);
 
   const closeOverlay = useCallback(() => {
