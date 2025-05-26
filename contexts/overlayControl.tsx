@@ -7,7 +7,7 @@ type OverlayType = "glossary" | "mobileMenu" | "partySyn" | null;
 
 type OverlayControlContextType = {
   openOverlay: (overlay: OverlayType, term?: string) => void;
-  closeOverlay: () => void;
+  closeOverlay: (term?: string) => void;
 };
 
 const OverlayControlContext = createContext<OverlayControlContextType | undefined>(undefined);
@@ -19,10 +19,10 @@ export function OverlayControlProvider({ children }: { children: ReactNode }) {
 
   const [currentOverlay, setCurrentOverlay] = useState<OverlayType>(null);
 
-  const closeAllOverlays = useCallback(() => {
+  const closeAllOverlays = useCallback((term?: string) => {
     closeGlossary();
     closeMobileMenu();
-    closePartySyn();
+    closePartySyn(term ? term : undefined);
     // ...close others as you add them
   }, [closeGlossary, closeMobileMenu]);
 
@@ -31,11 +31,11 @@ export function OverlayControlProvider({ children }: { children: ReactNode }) {
     setCurrentOverlay(overlay);
     if (overlay === "glossary") openGlossary(term);
     else if (overlay === "mobileMenu") openMobileMenu();
-    else if (overlay === "partySyn") openPartySyn(term);
+    else if (overlay === "partySyn") openPartySyn();
   }, [closeAllOverlays, openGlossary, openMobileMenu]);
 
-  const closeOverlay = useCallback(() => {
-    closeAllOverlays();
+  const closeOverlay = useCallback((term?: string) => {
+    closeAllOverlays(term ? term : undefined);
     setCurrentOverlay(null);
   }, [closeAllOverlays]);
 

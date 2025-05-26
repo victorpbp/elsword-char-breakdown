@@ -7,9 +7,10 @@ export default function PartySynItem({number}: {number: number}) {
     const { partySynItems } = usePartySyn();
     const { mainColor, name, icon, skills, command, notes } = partySynItems[number];
 
-
     return (
-        <table className="table-fixed w-full border-2 border-zinc-500">
+        <table 
+            id={name.replace(/\s+/g, '_').toLowerCase()}
+            className="table-fixed w-full border-2 border-zinc-500">
             <thead>
                 <tr className="
                     text-zinc-300 border-2 border-zinc-500

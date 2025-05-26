@@ -9,7 +9,8 @@ export default async function Home() {
   return (
     <div
     className="flex flex-col items-center justify-center
-    md:flex-row gap-8">
+      p-4 lg:max-w-5xl
+      md:flex-row gap-8">
       <div className="
       flex flex-col p-4 gap-4
       bg-zinc-700

@@ -36,7 +36,7 @@ export default function RootLayout({
 
               <Header />
 
-              <div className="flex-auto flex-col gap-20 max-w-5xl p-5">
+              <div className="flex-auto py-5 mb-12">
                 {children}
               </div>
 

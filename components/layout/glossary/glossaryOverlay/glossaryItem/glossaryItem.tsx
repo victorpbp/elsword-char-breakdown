@@ -15,7 +15,7 @@ export default function GlossaryItem({
             
             `}
             //${title === "Synergy" ? "border-t border-t-foreground/10" : ""}
-            id={title.replace(/ /g, "_")}
+            id={title.replace(/\s/g, "_")}
           >
             <h2
               className="text-2xl font-bold"

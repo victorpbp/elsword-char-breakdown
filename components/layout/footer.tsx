@@ -1,9 +1,6 @@
-import Image from 'next/image'
-import kofiLogo from '../../app/public/kofi_symbol.png'
-
 export default function Footer() {
     return (
-        <footer className="w-full flex flex-col items-center justify-center
+        <footer className="fixed bottom-0 w-full flex flex-col items-center justify-center
         border-t mx-auto text-center text-sm gap-2 py-2
         flex-shrink-0
         bg-zinc-900

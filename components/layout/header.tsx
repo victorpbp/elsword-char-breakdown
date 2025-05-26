@@ -45,7 +45,7 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
-                <button onClick={closeOverlay} className="fixed z-0 w-full h-full bg-black opacity-50" />
+                <button onClick={()=>closeOverlay()} className="fixed z-0 w-full h-full bg-black opacity-50" />
             </>
                 
             )}

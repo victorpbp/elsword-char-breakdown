@@ -24,8 +24,8 @@ type PartySynContextType = {
     isOpenPartySyn: boolean;
     targetTerm: string | null;
     partySynItems: PartySynItem[];
-    openPartySyn: (term?: string) => void;
-    closePartySyn: () => void;
+    openPartySyn: () => void;
+    closePartySyn: (term?: string) => void;
 };
 
 const PartySynContext = createContext<PartySynContextType | undefined>(undefined);
@@ -62,7 +62,7 @@ export function PartySynProvider({ children }: { children: ReactNode }) {
         },
         {
             mainColor: "#b75b5b",
-            name: "Knight Emperor (KE)",
+            name: "Rune Master (RM)",
             icon: KE,
             command: "Armageddon Blade, → → ↑ zzz, → → ↑ xx (Destruction)",
             notes: "Wind Slicer reduces Special Active cooldown -7s at 45% chance w/ Commands, 5s CD",
@@ -87,7 +87,7 @@ export function PartySynProvider({ children }: { children: ReactNode }) {
         },
         {
             mainColor: "#b75b5b",
-            name: "Knight Emperor (KE)",
+            name: "Immortal (IM)",
             icon: KE,
             command: "Armageddon Blade, → → ↑ zzz, → → ↑ xx (Destruction)",
             notes: "Wind Slicer reduces Special Active cooldown -7s at 45% chance w/ Commands, 5s CD",
@@ -113,13 +113,13 @@ export function PartySynProvider({ children }: { children: ReactNode }) {
     // Add more classes here
     ];
 
-    const openPartySyn = (term?: string) => {
-        setTargetTerm(term ? `#${term}` : null);
+    const openPartySyn = () => {
+        setTargetTerm(null);
         setIsOpenPartySyn(true);
     };
 
-    const closePartySyn = () => {
-        setTargetTerm(null);
+    const closePartySyn = (term?: string) => {
+        setTargetTerm(term ? term : null);
         setIsOpenPartySyn(false);
     };
 
