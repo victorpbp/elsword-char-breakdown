@@ -43,14 +43,7 @@ export default function PartySynItem({number}: {number: number}) {
                         </td>
                     </tr>
                 ))}
-                <tr className="bg-zinc-800 hover:bg-zinc-950 transition duration-300">
-                    <td>
-                    </td>
-                    <td className="p-2">
-                        <span className="font-bold">Command:</span> {command} <br/>
-                        <span className="font-bold">Notes:</span> {notes}
-                    </td>
-                </tr>
+                
             </tbody>
             
         </table>

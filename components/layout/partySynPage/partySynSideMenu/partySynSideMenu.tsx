@@ -4,7 +4,7 @@ import { usePartySyn } from "@/contexts/partySyn/partySynContext";
 import { useOverlayControl } from "@/contexts/overlayControl";
 import Image from "next/image";
 
-import arrowSymbol from "@/app/public/arrow.png";
+import arrowSymbol from "@/app/public/whiteArrow.png";
 
 export default function PartySynSideMenu() {
 
@@ -31,7 +31,8 @@ export default function PartySynSideMenu() {
                 <div className="
                     fixed bottom-14 sm:bottom-0 sm:top-12 left-0
                     flex flex-col w-full max-h-96
-                    bg-zinc-800 border-2 border-zinc-500 overflow-y-auto"
+                    bg-zinc-800 border-2 border-zinc-500 overflow-y-auto
+                    sm:hidden"
                 >
                     {partySynItems.map((_, index) => (
                         <button key={`${partySynItems[index].name} ${index}`} onClick={() => closeOverlay(partySynItems[index].name.replace(/\s+/g, '_').toLowerCase())}>
