@@ -1,10 +1,11 @@
 'use client';
 
-import { Input } from "@/components/fromTemplate/ui/input";
-import Link from "next/link";
-import { useState } from "react";
+import { useClasses } from "@/contexts/classes/classesContext";
+import Image from "next/image";
 
 export default function ClassesPage() {
+
+  const { classesItems, classesRoles } = useClasses();
 
   // Make a context for the positioning of each class on different tables
   // Each table is a different kind of class (e.g. High/Mid/Low Synergy, Support)
@@ -15,25 +16,41 @@ export default function ClassesPage() {
   // There should be another context for the class' page that shows all the information about the class
   // In order to make sure not to force the user to load so much information at once
   // Though, for the final version, this is irrelevant, as the backend will return only what is needed
-  
-    const [classes, setClasses] = useState('');
-    const updateClasses = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setClasses(e.target.value);
-    }
 
     return (
       <div
-        className="flex flex-col items-center justify-center gap-4 p-4 bg-zinc-700 rounded-2xl text-base"
+        className="flex flex-col items-center justify-center gap-4 p-4 bg-zinc-700 rounded-xl text-base"
       >
-        <p>This is the page showing all classes</p>
-        <p>For now, please, type a class to continue</p>
-        <Input onChange={(e) => updateClasses(e)}/>
-        <Link className="
-          p-4 rounded-md bg-zinc-800
-          hover:bg-zinc-950
-          font-semibold
-          transition-all duration-200 ease-in-out
-        " href={`/classes/${classes}`}>Go to the Class' Page</Link>
+        {classesRoles.map((role) => (
+          <div key={role} className="w-full max-w-4xl border-2 border-zinc-500 p-4 rounded-lg bg-zinc-800 mb-6">
+            <h2 className="text-2xl font-bold text-white mb-4">{
+              role.charAt(0).toUpperCase() + role.slice(1).replace("Syn", " Synergy")
+            }</h2>
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4">
+              {classesItems
+                .filter(item => item.role === role)
+                .map((item) => (
+                  <div
+                    key={item.name}
+                    className="cursor-pointer"
+                    onClick={() => window.location.href = `/classes/${item.name.toLowerCase().replace(/\s+/g, '_')}`}
+                  >
+                    <Image src={item.icon} width={48} height={48} alt={item.name} />
+                    {/*
+                    Make this into a tooltip?
+                    <h3 className="text-lg font-semibold">{item.name}</h3>
+                    <p className="text-sm text-gray-400">{item.description}</p> 
+                    */}
+
+                  </div>
+                ))}
+            </div>
+
+          </div>
+        ))}
+      {
+        //Could add the description for each role here at the bottom
+      }
       </div>
     );
   }
