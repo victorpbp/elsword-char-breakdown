@@ -6,8 +6,15 @@ import { useState } from "react";
 
 export default function ClassesPage() {
 
-    // We need a table here to show all classes in the correct categories, etc
-    // Each class should have its own page, with a link to it
+  // Make a context for the positioning of each class on different tables
+  // Each table is a different kind of class (e.g. High/Mid/Low Synergy, Support)
+  // The component loops that and creates a table for each kind and puts all classes in each table
+  // Each class has an icon, name and description
+  // Hovering on the class shows a tooltip with the class' name and description
+  // Clicking on the class redirects to the class' page with more information
+  // There should be another context for the class' page that shows all the information about the class
+  // In order to make sure not to force the user to load so much information at once
+  // Though, for the final version, this is irrelevant, as the backend will return only what is needed
   
     const [classes, setClasses] = useState('');
     const updateClasses = (e: React.ChangeEvent<HTMLInputElement>) => {

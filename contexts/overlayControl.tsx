@@ -1,9 +1,10 @@
 import { createContext, ReactNode, useCallback, useContext, useState } from "react";
 import { useGlossary } from "./glossary/glossaryContext";
-import { useMobileMenu } from "./mobileMenu/mobileMenuContext"; // Example for future
+import { useMobileMenu } from "./mobileMenu/mobileMenuContext";
 import { usePartySyn } from "./partySyn/partySynContext";
+import { useClasses } from "./classes/classesContext";
 
-type OverlayType = "glossary" | "mobileMenu" | "partySyn" | null;
+type OverlayType = "glossary" | "mobileMenu" | "partySyn" | "classes" |null;
 
 type OverlayControlContextType = {
   openOverlay: (overlay: OverlayType, term?: string) => void;
@@ -16,6 +17,7 @@ export function OverlayControlProvider({ children }: { children: ReactNode }) {
   const { openGlossary, closeGlossary } = useGlossary();
   const { openMobileMenu, closeMobileMenu } = useMobileMenu();
   const { openPartySyn, closePartySyn } = usePartySyn();
+  const { openClasses, closeClasses } = useClasses();
 
   const [currentOverlay, setCurrentOverlay] = useState<OverlayType>(null);
 
@@ -23,6 +25,7 @@ export function OverlayControlProvider({ children }: { children: ReactNode }) {
     closeGlossary();
     closeMobileMenu();
     closePartySyn(term ? term : undefined);
+    closeClasses();
     // ...close others as you add them
   }, [closeGlossary, closeMobileMenu]);
 
@@ -32,6 +35,7 @@ export function OverlayControlProvider({ children }: { children: ReactNode }) {
     if (overlay === "glossary") openGlossary(term);
     else if (overlay === "mobileMenu") openMobileMenu();
     else if (overlay === "partySyn") openPartySyn();
+    else if (overlay === "classes") openClasses();
   }, [closeAllOverlays, openGlossary, openMobileMenu]);
 
   const closeOverlay = useCallback((term?: string) => {
