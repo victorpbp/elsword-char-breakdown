@@ -1,5 +1,4 @@
 import Image from "next/image";
-import homeArt from "./public/homeArt.png";
 import aishaChibi from "./public/aishaChibi.png";
 import elesisChibi from "./public/elesisChibi.png";
 import elswordChibi from "./public/elswordChibi.png";
@@ -22,7 +21,6 @@ export default async function Home() {
         <p>This web app includes certain useful information about the game "Elsword", a 2.5D side-scrolling MMORPG owned by KOG Games.</p>
         <p>On this page, one can find in-depth explanation about characters, gameplay, gear and skill guidance as well as terminology used by the playerbase.</p>
         <p>We do not own Elsword. Used materials, which are trademarks and copyrights of KOG Studios, Nexon, Gameforge, KOG Games or its licensors, serve a purely representative, non-commercial purpose as of fair use. All rights reserved.</p>
-        <p><a className="font-semibold" href={"/glossary#Res_Title"}>Res Title</a> definition in Glossary</p>
       </div>
       <div className="md:w-1/2 grid grid-cols-2 justify-center items-center">
         <Image width={220} height={220} src={aishaChibi} alt="Artwork"/>

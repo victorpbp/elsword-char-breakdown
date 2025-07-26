@@ -7,22 +7,12 @@ export default function ClassesPage() {
 
   const { classesItems, classesRoles } = useClasses();
 
-  // Make a context for the positioning of each class on different tables
-  // Each table is a different kind of class (e.g. High/Mid/Low Synergy, Support)
-  // The component loops that and creates a table for each kind and puts all classes in each table
-  // Each class has an icon, name and description
-  // Hovering on the class shows a tooltip with the class' name and description
-  // Clicking on the class redirects to the class' page with more information
-  // There should be another context for the class' page that shows all the information about the class
-  // In order to make sure not to force the user to load so much information at once
-  // Though, for the final version, this is irrelevant, as the backend will return only what is needed
-
     return (
-      <div
-        className="flex flex-col items-center justify-center gap-4 p-4 bg-zinc-700 rounded-xl text-base"
-      >
+      <div>
         {classesRoles.map((role) => (
-          <div key={role} className="w-full max-w-4xl border-2 border-zinc-500 p-4 rounded-lg bg-zinc-800 mb-6">
+          <div key={role} className={`w-full max-w-4xl border-2 border-zinc-500 p-4 rounded-lg mb-6
+          ${role === 'HighSyn' ? 'bg-red-900' : role === 'MidSyn' ? 'bg-yellow-900' : role === 'LowSyn' ? 'bg-green-900' : 'bg-blue-900'}
+          `}>
             <h2 className="text-2xl font-bold text-white mb-4">{
               role.charAt(0).toUpperCase() + role.slice(1).replace("Syn", " Synergy")
             }</h2>
@@ -32,7 +22,8 @@ export default function ClassesPage() {
                 .map((item) => (
                   <div
                     key={item.name}
-                    className="cursor-pointer"
+                    className="cursor-pointer p-1 bg-zinc-600 hover:bg-zinc-300
+                    transition-colors duration-200"
                     onClick={() => window.location.href = `/classes/${item.name.toLowerCase().replace(/\s+/g, '_')}`}
                   >
                     <Image src={item.icon} width={48} height={48} alt={item.name} />
