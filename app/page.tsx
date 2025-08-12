@@ -9,13 +9,13 @@ export default async function Home() {
     <div
     className="flex flex-col items-center justify-center
       p-4 lg:max-w-5xl
-      md:flex-row gap-8">
+      lg:flex-row gap-8">
       <div className="
       flex flex-col p-4 gap-4
       bg-zinc-700
       rounded-2xl
       text-base
-      md:w-1/2
+      lg:w-1/2
       ">
         <h1 className="text-violet-300 opacity-75 text-2xl flex-">Hi, guest!</h1>
         <p>This web app includes certain useful information about the game "Elsword", a 2.5D side-scrolling MMORPG owned by KOG Games.</p>

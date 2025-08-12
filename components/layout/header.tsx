@@ -13,11 +13,9 @@ import { useOverlayControl } from "@/contexts/overlayControl";
 export default function Header() {
 
     const { openOverlay, closeOverlay } = useOverlayControl();
-
     const { isOpenMenu } = useMobileMenu();
 
     return (
-
         <>
             <button onClick={isOpenMenu ? ()=>closeOverlay() : ()=>openOverlay('mobileMenu')}
             className={`
@@ -26,13 +24,11 @@ export default function Header() {
                 rounded-lg border-4
                 transition-colors duration-400
                 ${isOpenMenu ? "bg-zinc-700 border-zinc-900" : "bg-zinc-900 border-zinc-700"}
-                sm:hidden
+                md:hidden
             `}>
-
                 <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpenMenu ? "-rotate-45 absolute" : ""}`} />
                 <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpenMenu ? "opacity-0" : "opacity-100"}`} />
-                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpenMenu ? "rotate-45 absolute" : ""}`} />                    
-
+                <div className={`w-4 h-0.5 bg-zinc-300 transition-all duration-300 ${isOpenMenu ? "rotate-45 absolute" : ""}`} />
             </button>
             {isOpenMenu && (<>
                 <div className="fixed bottom-0 w-screen z-40 flex justify-center items-center">
@@ -46,28 +42,19 @@ export default function Header() {
                     </div>
                 </div>
                 <button onClick={()=>closeOverlay()} className="fixed z-0 w-full h-full bg-black opacity-50" />
-            </>
-                
-            )}
+            </>)}
 
 
             {/* Desktop version */}
-            <nav className="bg-zinc-900 w-full justify-center border-b border-b-foreground/10 h-12 hidden
-            position: sticky top-0 z-50
-            sm:flex
-            ">
-                <div className="w-full max-w-5xl flex justify-center gap-2 items-center p-3 px-5 text-sm
-                ">
+            <nav className="bg-zinc-900 h-screen w-32 fixed top-0 left-0 z-10 py-4 px-2 hidden md:flex flex-col justify-start items-center">
+                <div className="flex flex-col gap-8">
                     <HeaderItem title={"Home"} icon={homeIcon} linkto="/" />
                     <HeaderItem title={"Classes"} icon={classesIcon} linkto="/classes" />
                     <HeaderItem title={"Party Syn"} icon={partySynIcon} linkto="/party_syn"/>
                     <HeaderItem title={"Raids"} icon={null} linkto="/raids"/>
-                    </div>
+                </div>
             </nav>
 
         </>
     )
-
-
-
 }

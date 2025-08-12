@@ -8,15 +8,15 @@ export default function ClassesPage() {
   const { classesItems, classesRoles } = useClasses();
 
     return (
-      <div>
+      <div className="p-4 -mt-6 md:mt-0" >
         {classesRoles.map((role) => (
-          <div key={role} className={`w-full max-w-4xl border-2 border-zinc-500 p-4 rounded-lg mb-6
-          ${role === 'HighSyn' ? 'bg-red-900' : role === 'MidSyn' ? 'bg-yellow-900' : role === 'LowSyn' ? 'bg-green-900' : 'bg-blue-900'}
+          <div key={role} className={`w-full max-w-4xl border-2 border-zinc-500 p-4 rounded-lg mb-4
+          ${role === 'HighSyn' ? 'bg-green-900' : role === 'MidSyn' ? 'bg-yellow-900' : role === 'LowSyn' ? 'bg-red-900' : 'bg-blue-900'}
           `}>
             <h2 className="text-2xl font-bold text-white mb-4">{
               role.charAt(0).toUpperCase() + role.slice(1).replace("Syn", " Synergy")
             }</h2>
-            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4">
+            <div className="flex flex-row flex-wrap gap-4">
               {classesItems
                 .filter(item => item.role === role)
                 .map((item) => (

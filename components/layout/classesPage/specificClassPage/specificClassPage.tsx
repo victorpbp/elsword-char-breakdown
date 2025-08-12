@@ -96,7 +96,7 @@ export default function SpecificClassPage() {
         p-8 -mt-10 -mb-5
         bg-zinc-900
         flex flex-col items-start
-        w-full max-w-2xl
+        w-full max-w-6xl
         markdown
         [&_table]:border-collapse
         [&_table]:border-blue-500

@@ -55,18 +55,19 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
         return ([] as T[]).concat(...Array(times).fill(arr));
     }
 
-    const classesRoles: ClassesRole[] = ["HighSyn", "MidSyn", "LowSyn", "Support"];
+    const classesRoles: ClassesRole[] = ["LowSyn", "MidSyn", "HighSyn", "Support"];
 
     const example: ClassesItem[] = [
         {
             mainColor: "#FF5733",
             name: "Knight Emperor (KE)",
             description: "Elsword's first path is a decent damage dealer, even though Grand Cross is pretty slow in this meta. He provides good supporting options, such as physical damage taken and defense debuffs. It's a good class for EXP farming because of wide skill AoE like Vertical Slash or [Mod] Windmill, but note that you'll be expected to deal damage in raids.",
-            role: "HighSyn",
+            role: "LowSyn",
             icon: "https://cobodex.eu/_next/image?url=%2Fcharacter_icons%2Fke.png&w=64&q=75",
             fullBody: "https://cobodex.eu/_next/image?url=%2Fcharacters%2Fke.png&w=1920&q=75",
             insights: ""
-        },        {
+        },
+        {
             mainColor: "#FF5733",
             name: "Knight Emperor (KE)",
             description: "Elsword's first path is a decent damage dealer, even though Grand Cross is pretty slow in this meta. He provides good supporting options, such as physical damage taken and defense debuffs. It's a good class for EXP farming because of wide skill AoE like Vertical Slash or [Mod] Windmill, but note that you'll be expected to deal damage in raids.",
@@ -79,7 +80,7 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
             mainColor: "#FF5733",
             name: "Knight Emperor (KE)",
             description: "Elsword's first path is a decent damage dealer, even though Grand Cross is pretty slow in this meta. He provides good supporting options, such as physical damage taken and defense debuffs. It's a good class for EXP farming because of wide skill AoE like Vertical Slash or [Mod] Windmill, but note that you'll be expected to deal damage in raids.",
-            role: "LowSyn",
+            role: "HighSyn",
             icon: "https://cobodex.eu/_next/image?url=%2Fcharacter_icons%2Fke.png&w=64&q=75",
             fullBody: "https://cobodex.eu/_next/image?url=%2Fcharacters%2Fke.png&w=1920&q=75",
             insights: ""

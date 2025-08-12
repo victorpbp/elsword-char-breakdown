@@ -36,7 +36,7 @@ export default function RootLayout({
 
               <Header />
 
-              <div className="flex-auto py-5 mb-12">
+              <div className="flex-auto pb-5 mb-12 ml-0 md:ml-32">
                 {children}
               </div>
 

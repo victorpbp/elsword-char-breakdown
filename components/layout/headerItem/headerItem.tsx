@@ -26,7 +26,7 @@ export default function HeaderItem({
             <div
             className={`
                 cursor-pointer font-bold
-                flex items-center p-3
+                flex items-center py-2 px-1
                 border-b-2 border-transparent
                 hover:border-zinc-400
                 hover:bg-zinc-800 

@@ -16,11 +16,10 @@ export default function PartySynPage() {
             if (element) {
                 console.log("Scrolling to element with ID:", targetTerm);
                 element.scrollIntoView({ behavior: 'smooth' });
-                if (targetTerm !== "knight_emperor_(ke)" && window.innerWidth <= 640) {
+                if (targetTerm !== "knight_emperor_(ke)") {
                     setTimeout(() => {
-                        // Adjust this value to match your overlay/header height
-                        const yOffset = 48; // e.g., -64px for a 4rem header
-                        window.scrollBy({ top: yOffset, behavior: 'instant' });
+                        const yOffset = 48;
+                        window.scrollBy({ top: yOffset, behavior: 'smooth' });
                     }, 400); // 400ms matches the smooth scroll duration
                 }
             }
@@ -29,17 +28,16 @@ export default function PartySynPage() {
 
     return (
         <div className="
-            flex flex-row min-h-screen text-zinc-300"
+            flex flex-row text-zinc-300"
         >
             <PartySynSideMenu />
             <div className="
-            flex flex-col flex-grow flex-1 ml-0 sm:ml-36 gap-5
-            -mt-5 sm:-mt-9
-            -mb-8 sm:-mb-3.5
+            flex flex-col flex-grow flex-1 ml-0 md:ml-32 gap-5
+            
             lg:max-w-screen-lg 
             ">
                 {partySynItems.map((_, index) => (
-                    <div key={index} className="text-sm">
+                    <div key={index} className={`text-sm ${index === partySynItems.length - 1 ? "-mb-2.5" : ""}`}>
                         <PartySynItem number={index} />
                     </div>
                 ))}

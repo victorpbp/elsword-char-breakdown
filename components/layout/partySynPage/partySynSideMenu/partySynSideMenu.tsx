@@ -21,7 +21,7 @@ export default function PartySynSideMenu() {
                 rounded-lg border-4
                 transition-colors duration-400
                 ${isOpenPartySyn ? "bg-zinc-700 border-zinc-900" : "bg-zinc-900 border-zinc-700"}
-                sm:hidden
+                md:hidden
             `}>
 
                 <Image src={arrowSymbol} alt="Menu Toggle" width={16} className={`rotate-180 transition-all duration-300 ${isOpenPartySyn ? "-rotate-0" : ""}`} />                   
@@ -29,10 +29,10 @@ export default function PartySynSideMenu() {
             </button>
             {isOpenPartySyn && (<>
                 <div className="
-                    fixed bottom-14 sm:bottom-0 sm:top-12 left-0
+                    fixed bottom-14 md:bottom-0 md:top-12 left-0
                     flex flex-col w-full max-h-96
                     bg-zinc-800 border-2 border-zinc-500 overflow-y-auto
-                    sm:hidden"
+                    md:hidden"
                 >
                     {partySynItems.map((_, index) => (
                         <button key={`${partySynItems[index].name} ${index}`} onClick={() => closeOverlay(partySynItems[index].name.replace(/\s+/g, '_').toLowerCase())}>
@@ -48,10 +48,10 @@ export default function PartySynSideMenu() {
 
             {/* Desktop version */}
             <div className="
-                hidden sm:flex
-                fixed top-0 sm:top-12 left-0
-                flex-col w-36
-                h-[calc(100vh-2.3rem)] sm:h-[calc(100vh-6.3rem)]
+                hidden md:flex
+                fixed top-0 left-32
+                flex-col w-32
+                h-[calc(100vh-2.3rem)] md:h-[calc(100vh-3.6rem)]
                 bg-zinc-800 border-2 border-zinc-500 overflow-y-auto"
             >
                 {partySynItems.map((_, index) => (

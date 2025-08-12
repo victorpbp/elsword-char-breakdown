@@ -1,14 +1,11 @@
 export default function Footer() {
     return (
         <footer className="fixed bottom-0 w-full flex flex-col items-center justify-center
-        border-t mx-auto text-center text-sm gap-2 py-2
-        h-14
-        flex-shrink-0
+        border-t mx-auto text-center text-sm gap-2 py-4 h-14
         bg-zinc-900
-        sm:h-auto
         sm:flex-row
-        sm:gap-4
-        sm:py-4"
+        md:pl-24"
+        
         >
             <p>
                 Maintained by {" "}
