@@ -1,23 +1,34 @@
 'use client';
 
-import { useClasses } from "@/contexts/classes/classesContext";
+import { Characters, ClassesItem, useClasses } from "@/contexts/classes/classesContext";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ClassesPageSideMenu() {
 
-    const [stageProgression, setStageProgression] = useState(0);
-    const [interestedCharacter, setInterestedCharacter] = useState<string>('Elsword');
-    const [interestedClasses, setInterestedClasses] = useState<string>('Knight Emperor (KE)');
+    const { charactersItems } = useClasses();
 
-    const handleStageProgression = (stage: number, character?: string, classes?: string ) => {
-        console.log(`Stage: ${stage}, Character: ${character}, Classes: ${classes}`);
-        if (classes) setInterestedClasses(classes);
-        if (character) setInterestedCharacter(character);
+    const [stageProgression, setStageProgression] = useState(0);
+    const [interestedCharacter, setInterestedCharacter] = useState<Characters>(charactersItems[0]);
+    const [interestedClasses, setInterestedClasses] = useState<ClassesItem>(charactersItems[0].classes[0]);
+
+    const handleCharacterSelection = (character: Characters) => {
+        setInterestedCharacter(character);
+        setStageProgression(1);
+    }
+    const handleClassSelection = (classes: ClassesItem) => {
+        setInterestedClasses(classes);
+        setStageProgression(2);
+    }
+
+    const handleStageRegression = (stage: number) => {
+        if (stage < 0) return;
         setStageProgression(stage);
     }
 
-    const { charactersItems } = useClasses();
+    useEffect(() => {
+
+    }, [interestedCharacter]);
 
     return (
         <>
@@ -30,7 +41,7 @@ export default function ClassesPageSideMenu() {
             >
                 {charactersItems.map((item, index) => (
                     <button key={`${item.name} ${index} 1`}
-                    onClick={() => handleStageProgression(1, item.name)}>
+                    onClick={() => handleCharacterSelection(charactersItems[index])}>
                         <Image
                             src={item.icon}
                             width={48}
@@ -44,18 +55,23 @@ export default function ClassesPageSideMenu() {
 
             {/* Stage 1 - Class Selection */}
             <div
-                className={`p-4 max-w-md z-50
-                fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                className={`sm:p-4 pt-16 max-w-2xl z-50 min-w-72
+                fixed left-1/2 transform -translate-x-1/2
+                overflow-y-auto no-scrollbar
                 ${stageProgression === 1 ? '' : 'hidden'}`}
+                style={{
+                top: '5rem',
+                maxHeight: 'calc(100vh - 2rem)', // leaves space at top and bottom
+                }}
             >
                 <div className="flex flex-col items-center gap-4">
-                    {charactersItems.find(item => item.name === interestedCharacter)?.classes.map((cls, index) => (
+                    {interestedCharacter.classes.map((cls, index) => (
                         <button key={`${cls.name} ${index} 2`}
-                            onClick={() => handleStageProgression(2, undefined, cls.name)}
+                            onClick={() => handleClassSelection(interestedCharacter.classes[index])}
                             className={`p-8 opacity-80 hover:opacity-100 transition-colors duration-200 rounded-lg
                             flex flex-row items-center gap-4
                             w-80 sm:w-96 `}
-                            style={{ backgroundColor: charactersItems.find(item => item.name === interestedCharacter)?.mainColor }}>
+                            style={{ backgroundColor: interestedCharacter.mainColor }}>
                             <Image
                                 src={cls.icon}
                                 width={48}
@@ -78,30 +94,26 @@ export default function ClassesPageSideMenu() {
                 overflow-y-auto no-scrollbar
                 ${stageProgression === 2 ? '' : 'hidden'}`}
                 style={{
-                top: '0',
+                top: '12rem',
                 maxHeight: 'calc(100vh - 2rem)', // leaves space at top and bottom
                 }}
             >
                 <div className="flex flex-col items-center gap-4">
-                    {charactersItems.find(item => item.name === interestedCharacter)?.classes
-                    .filter(cls => cls.name === interestedClasses)
-                    .map((cls, index) => (
-                        <button key={`${cls.name} ${index} 3`}
-                        onClick={() => window.location.href = `/classes/${cls.name.toLowerCase().replace(/\s+/g, '_')}`}
+                        <button key={`${interestedClasses} 3`}
+                        onClick={() => window.location.href = `/classes/${interestedClasses.name.toLowerCase().replace(/\s+/g, '_')}`}
                         className={`p-4 opacity-90 hover:opacity-100 transition-colors duration-200 rounded-lg
                             flex flex-col items-center`}
-                        style={{ backgroundColor: charactersItems.find(item => item.name === interestedCharacter)?.mainColor }}>
+                        style={{ backgroundColor: interestedCharacter.mainColor }}>
                         <Image
-                            src={cls.icon}
+                            src={interestedClasses.icon}
                             width={48}
                             height={48}
-                            alt={cls.name}
+                            alt={interestedClasses.name}
                             className="rounded-full"
                         />
-                        <h3 className="text-lg font-semibold mt-2">{cls.name}</h3>
-                        <p className="text-sm text-center mt-2">{cls.description}</p>
+                        <h3 className="text-lg font-semibold mt-2">{interestedClasses.name}</h3>
+                        <p className="text-sm text-center mt-2">{interestedClasses.description}</p>
                         </button>
-                    ))}
                 </div>
             </div>
 
@@ -110,7 +122,7 @@ export default function ClassesPageSideMenu() {
                 className={`w-screen h-screen fixed top-0 left-0
                 bg-zinc-800 bg-opacity-90 backdrop-blur-sm
                 z-40 ${stageProgression === 0 ? 'hidden' : ''}`}
-                onClick={() => handleStageProgression(stageProgression - 1)}
+                onClick={() => handleStageRegression(stageProgression - 1)}
             />
 
         </>

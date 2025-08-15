@@ -6,14 +6,14 @@ type CharactersNames = "Elsword" | "Rena" | "Aisha" | "Raven" | "Eve" | "Chung" 
 
 type ClassesRole = "HighSyn" | "MidSyn" | "LowSyn" | "Support";
 
-type Characters = {
+export type Characters = {
     name: string;
     mainColor: string;
     icon: StaticImageData | string; //Icon can be a StaticImageData or a string URL
     classes: ClassesItem[];
 }
 
-type ClassesItem = {
+export type ClassesItem = {
     name: string;
     description: string;
     role: ClassesRole;
