@@ -2,13 +2,14 @@
 
 import { useClasses } from "@/contexts/classes/classesContext";
 import Image from "next/image";
+import ClassesPageSideMenu from "./classesPageSideMenu/classesPageSideMenu";
 
 export default function ClassesPage() {
 
-  const { classesItems, classesRoles } = useClasses();
+  const { charactersItems, classesRoles } = useClasses();
 
     return (
-      <div className="p-4 -mt-6 md:mt-0" >
+      <div className="p-4 -mt-6 md:mt-0 ml-16" >
         {classesRoles.map((role) => (
           <div key={role} className={`w-full max-w-4xl border-2 border-zinc-500 p-4 rounded-lg mb-4
           ${role === 'HighSyn' ? 'bg-green-900' : role === 'MidSyn' ? 'bg-yellow-900' : role === 'LowSyn' ? 'bg-red-900' : 'bg-blue-900'}
@@ -17,7 +18,9 @@ export default function ClassesPage() {
               role.charAt(0).toUpperCase() + role.slice(1).replace("Syn", " Synergy")
             }</h2>
             <div className="flex flex-row flex-wrap gap-4">
-              {classesItems
+              {charactersItems.map((item) =>
+                // Filter classes by the current role
+                item.classes
                 .filter(item => item.role === role)
                 .map((item) => (
                   <div
@@ -27,14 +30,8 @@ export default function ClassesPage() {
                     onClick={() => window.location.href = `/classes/${item.name.toLowerCase().replace(/\s+/g, '_')}`}
                   >
                     <Image src={item.icon} width={48} height={48} alt={item.name} />
-                    {/*
-                    Make this into a tooltip?
-                    <h3 className="text-lg font-semibold">{item.name}</h3>
-                    <p className="text-sm text-gray-400">{item.description}</p> 
-                    */}
-
                   </div>
-                ))}
+                )))}
             </div>
 
           </div>
@@ -42,6 +39,7 @@ export default function ClassesPage() {
       {
         //Could add the description for each role here at the bottom
       }
+      <ClassesPageSideMenu />
       </div>
     );
   }

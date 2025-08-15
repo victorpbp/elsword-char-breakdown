@@ -88,9 +88,9 @@ A component by [Espen Hovlandsdal](https://espen.codes/)
 `
 export default function SpecificClassPage() {
 
-    const { classesItems } = useClasses();
-    const relevantClass = classesItems.find(item => item.name.toLowerCase().replace(/\s+/g, '_') === useParams().uid);
-
+/*     const { charactersItems } = useClasses();
+    const relevantClass = charactersItems.find(item => item.name.toLowerCase().replace(/\s+/g, '_') === useParams().uid);
+ */
     return (
       <div className="
         p-8 -mt-10 -mb-5

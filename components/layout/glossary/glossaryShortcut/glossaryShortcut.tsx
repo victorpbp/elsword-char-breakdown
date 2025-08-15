@@ -18,7 +18,7 @@ export default function GlossaryShortcut() {
         <>
             <button onClick={isOpenGlossary ? ()=>closeOverlay() : ()=>openOverlay('glossary', 'Support')} 
             className={`flex items-center h-12 p-3
-                fixed right-10 bottom-40 z-50
+                fixed right-10 bottom-40 z-40
                 rounded-lg border-4
                 transition-colors duration-400
                 ${isOpenGlossary ? "bg-zinc-700 border-zinc-900" : "bg-zinc-900 border-zinc-700"}
@@ -33,7 +33,7 @@ export default function GlossaryShortcut() {
             </button>
             
             {isOpenGlossary && (<>
-                <div className="fixed bottom-0 z-40 ">
+                <div className="fixed bottom-0 z-30 ">
                     <div className="bg-zinc-600 px-5 py-10">
                         <div className="flex flex-col max-h-96 overflow-y-auto">
                             <GlossaryOverlay />
