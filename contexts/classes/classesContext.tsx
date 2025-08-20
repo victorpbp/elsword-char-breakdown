@@ -2,12 +2,17 @@ import { useState, createContext, useContext, ReactNode } from "react";
 
 import type { StaticImageData } from 'next/image';
 
+import portraitES from "@/app/public/classes/Portrait_-_Empire_Sword_Master.png"
+import portraitFL from "@/app/public/classes/Portrait_-_Flame_Lord_Master.png"
+import portraitBQ from "@/app/public/classes/Portrait_-_Bloody_Queen_Master.png"
+import portraitAD from "@/app/public/classes/Portrait_-_Adrestia_Master.png"
+
 type CharactersNames = "Elsword" | "Rena" | "Aisha" | "Raven" | "Eve" | "Chung" | "Ara" | "Elesis" | "Add" | "LuCiel" | "Rose" | "Ain" | "Laby" | "Noah" | "Lithia";
 
 type ClassesRole = "HighSyn" | "MidSyn" | "LowSyn" | "Support";
 
 export type Characters = {
-    name: string;
+    name: CharactersNames;
     mainColor: string;
     icon: StaticImageData | string; //Icon can be a StaticImageData or a string URL
     classes: ClassesItem[];
@@ -18,6 +23,7 @@ export type ClassesItem = {
     description: string;
     role: ClassesRole;
     icon: StaticImageData | string; //Icon can be a StaticImageData or a string URL
+    portrait: StaticImageData | string; //Portrait can also be a StaticImageData or a string URL
     fullBody: StaticImageData | string; //Full body image can also be a StaticImageData or a string URL
     insights: string; // Preview of the class for the initial Class page
 };
@@ -57,6 +63,7 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
                     role: "LowSyn",
                     icon: "https://cobodex.eu/_next/image?url=%2Fcharacter_icons%2Fke.png&w=64&q=75",
                     fullBody: "https://cobodex.eu/_next/image?url=%2Fcharacters%2Fke.png&w=1920&q=75",
+                    portrait: portraitES,
                     insights: ""
                 },
                 {
@@ -65,14 +72,16 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
                     role: "MidSyn",
                     icon: "https://cobodex.eu/_next/image?url=%2Fcharacter_icons%2Fke.png&w=64&q=75",
                     fullBody: "https://cobodex.eu/_next/image?url=%2Fcharacters%2Fke.png&w=1920&q=75",
+                    portrait: portraitFL,
                     insights: ""
                 },
                 {
-                    name: "Knight Emperor (KE)",
+                    name: "Nisha",
                     description: "Elsword's first path is a decent damage dealer, even though Grand Cross is pretty slow in this meta. He provides good supporting options, such as physical damage taken and defense debuffs. It's a good class for EXP farming because of wide skill AoE like Vertical Slash or [Mod] Windmill, but note that you'll be expected to deal damage in raids.",
                     role: "HighSyn",
                     icon: "https://cobodex.eu/_next/image?url=%2Fcharacter_icons%2Fke.png&w=64&q=75",
                     fullBody: "https://cobodex.eu/_next/image?url=%2Fcharacters%2Fke.png&w=1920&q=75",
+                    portrait: portraitBQ,
                     insights: ""
                 },
                 {
@@ -81,6 +90,7 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
                     role: "Support",
                     icon: "https://cobodex.eu/_next/image?url=%2Fcharacter_icons%2Fke.png&w=64&q=75",
                     fullBody: "https://cobodex.eu/_next/image?url=%2Fcharacters%2Fke.png&w=1920&q=75",
+                    portrait: portraitAD,
                     insights: ""
                 },
             ]

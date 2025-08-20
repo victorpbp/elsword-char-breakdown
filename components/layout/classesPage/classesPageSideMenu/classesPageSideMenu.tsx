@@ -55,29 +55,32 @@ export default function ClassesPageSideMenu() {
 
             {/* Stage 1 - Class Selection */}
             <div
-                className={`sm:p-4 pt-16 max-w-2xl z-50 min-w-72
+                className={`pt-4 max-w-2xl z-50 min-w-72
                 fixed left-1/2 transform -translate-x-1/2
-                overflow-y-auto no-scrollbar
+                overflow-y-auto no-scrollbar w-full
                 ${stageProgression === 1 ? '' : 'hidden'}`}
                 style={{
-                top: '5rem',
+                top: '2rem',
                 maxHeight: 'calc(100vh - 2rem)', // leaves space at top and bottom
                 }}
             >
-                <div className="flex flex-col items-center gap-4">
+                <div className="flex flex-col items-center gap-1">
                     {interestedCharacter.classes.map((cls, index) => (
                         <button key={`${cls.name} ${index} 2`}
                             onClick={() => handleClassSelection(interestedCharacter.classes[index])}
-                            className={`p-8 opacity-80 hover:opacity-100 transition-colors duration-200 rounded-lg
-                            flex flex-row items-center gap-4
-                            w-80 sm:w-96 `}
-                            style={{ backgroundColor: interestedCharacter.mainColor }}>
+                            className={`px-8 opacity-80 hover:opacity-100 transition-colors duration-200 rounded-lg
+                            flex flex-row items-center gap-4 w-full h-44 overflow-hidden`}
+                            style={{ 
+                                backgroundColor: interestedCharacter.classes[index].name.toLowerCase().includes('nisha') ? "#282078" : interestedCharacter.mainColor,
+                                color: interestedCharacter.classes[index].name.toLowerCase().includes('nisha') ? "#ffffff" : "#000000"
+                                }}>
                             <Image
-                                src={cls.icon}
-                                width={48}
-                                height={48}
+                                src={cls.portrait}
+                                style={{ 
+                                    objectPosition: 'center',
+                                    width: '50%',
+                                }}
                                 alt={cls.name}
-                                className="rounded-full"
                             />
                             <h3 className="text-lg font-semibold mt-2">{cls.name}</h3>
                         </button>
@@ -89,32 +92,40 @@ export default function ClassesPageSideMenu() {
             {/* Stage 2 - Class Specifier */}
 
             <div
-                className={`sm:p-4 pt-16 max-w-2xl z-50 min-w-72
+                className={`pt-4 max-w-2xl min-w-72 z-50 
                 fixed left-1/2 transform -translate-x-1/2
-                overflow-y-auto no-scrollbar
+                overflow-y-auto no-scrollbar w-full h-full
                 ${stageProgression === 2 ? '' : 'hidden'}`}
                 style={{
-                top: '12rem',
-                maxHeight: 'calc(100vh - 2rem)', // leaves space at top and bottom
+                top: '6rem',
+                maxHeight: 'calc(100vh - 12rem)', // leaves space at top and bottom
                 }}
             >
-                <div className="flex flex-col items-center gap-4">
-                        <button key={`${interestedClasses} 3`}
-                        onClick={() => window.location.href = `/classes/${interestedClasses.name.toLowerCase().replace(/\s+/g, '_')}`}
-                        className={`p-4 opacity-90 hover:opacity-100 transition-colors duration-200 rounded-lg
-                            flex flex-col items-center`}
-                        style={{ backgroundColor: interestedCharacter.mainColor }}>
-                        <Image
-                            src={interestedClasses.icon}
-                            width={48}
-                            height={48}
-                            alt={interestedClasses.name}
-                            className="rounded-full"
-                        />
-                        <h3 className="text-lg font-semibold mt-2">{interestedClasses.name}</h3>
-                        <p className="text-sm text-center mt-2">{interestedClasses.description}</p>
-                        </button>
+                <button key={`${interestedClasses} 3`}
+                onClick={() => window.location.href = `/classes/${interestedClasses.name.toLowerCase().replace(/\s+/g, '_')}`}
+                className={`px-8 opacity-90 hover:opacity-100 transition-colors duration-200 rounded-lg
+                w-full h-full overflow-hidden flex flex-col items-center justify-evenly text-black`}
+                style={{ 
+                    backgroundColor: interestedClasses.name.toLowerCase().includes('nisha') ? "#282078" : interestedCharacter.mainColor,
+                    color: interestedClasses.name.toLowerCase().includes('nisha') ? "#ffffff" : "#000000"
+                    }}>
+                <div>
+                    <h3 className="text-lg font-semibold mt-2">{interestedClasses.name}</h3>
+                    <p className="text-sm text-center mt-2">{interestedClasses.description}</p>
                 </div>
+                <div className="overflow-hidden w-full h-96 flex items-center justify-center">
+                    <Image
+                            src={interestedClasses.portrait}
+                            style={{ 
+                                width: '800px', //Adjust width based on the standard to be set for the image resolution
+                                height: 'auto',
+                                objectFit: 'cover',
+                                objectPosition: 'center',
+                            }}
+                            alt={interestedClasses.name}
+                    />
+                </div>
+                </button>
             </div>
 
             {/* Background logic for Stages 1 and 2 */}
